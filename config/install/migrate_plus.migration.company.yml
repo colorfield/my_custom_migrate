@@ -1,0 +1,37 @@
+# Migration metadata
+id: company
+label: Migrate list of companies
+migration_group: my_custom_migrate
+
+# Source plugin, id defined in the @MigrateSource annotation
+# in the src/Plugin/migrate/source/Company.php file.
+source:
+  plugin: company
+
+# Destination plugin
+destination:
+  plugin: entity:node
+
+# Process plugin
+process:
+  # Node type (bundle)
+  type:
+    plugin: default_value
+    default_value: company
+
+  # One-to-one field mapping using the default "get" process plugin.
+  title: name
+  # We can also use body/summary, body/format
+  # see core/modules/text/config/schema/text.schema.yml
+  # field.value.text_with_summary, used by the node entity for the body field.
+  body/value: description
+  field_telephone:
+    plugin: trim
+    source: phone
+  field_email:
+    plugin: validate_mail
+    source: email
+  field_website: website # and not field_website/url
+
+# Nothing needed here, it is a single table without any other relation.
+migration_dependencies: {}

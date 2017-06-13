@@ -1,0 +1,18 @@
+<?php
+
+/**
+ * Implements hook_uninstall().
+ */
+function my_custom_migrate_uninstall() {
+  // @review with like
+  $configs  = [
+    'migrate_plus.migration_group.my_custom_migrate',
+    'migrate_plus.migration.company',
+  ];
+  foreach($configs as $config) {
+    $delete = \Drupal::database()->delete('config')
+      ->condition('name', $config)
+      ->execute();
+  }
+  drupal_flush_all_caches();
+}

@@ -1,0 +1,24 @@
+<?php
+
+/**
+ * @file
+ * Contains my_custom_migrate.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function my_custom_migrate_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the my_custom_migrate module.
+    case 'help.page.my_custom_migrate':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('Custom migrate example') . '</p>';
+      return $output;
+
+    default:
+  }
+}
