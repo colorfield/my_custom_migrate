@@ -32,6 +32,8 @@ class Company extends SqlBase {
         'email',
         'website',
       ));
+      // debug only : optionally limit to rows to be imported
+      //))->range(0,10);
     return $query;
   }
 
