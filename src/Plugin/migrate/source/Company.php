@@ -37,7 +37,10 @@ class Company extends SqlBase {
     return $query;
   }
 
-//  // debug only
+//  // Debug only.
+//  // If you uncomment this, also uncomment the
+//  // use Drupal\migrate\Row; declaration
+//  // at the top of the file
 //  public function prepareRow(Row $row) {
 //    drush_print_r($row);
 //    return parent::prepareRow($row);
